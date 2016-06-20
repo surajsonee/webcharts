@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Bar Chart Demo</title>
+    <script src="./js/Chart.bundle.js"></script>
+    <script src="./js/jquery-1.11.2.min.js"></script>
+    <style>
+    canvas {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="container" style="width: 75%;">
+        <canvas id="canvas"></canvas>
+    </div>
+    <script>
+        var barChartData = {
+            labels: ["January", "February", "March", "April", "May", "June", "July", "August"],
+            datasets: [{
+                label: 'Income Dataset',
+                backgroundColor: "rgba(220,220,220,0.5)",
+                data: [100, 120, 190, 180, 144, 156, 110, 135],
+            }, ]
+        };
+
+        window.onload = function() {
+            var ctx = document.getElementById("canvas").getContext("2d");
+            window.myBar = new Chart(ctx, {
+                type: 'bar',
+                data: barChartData,
+                options: {
+                    elements: {
+                        rectangle: {
+                            borderWidth: 2,
+                            borderColor: 'rgb(0, 255, 0)',
+                            borderSkipped: 'bottom'
+                        }
+                    },
+                    responsive: true,
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Monthly Income Chart'
+                    }
+                }
+            });
+
+        };
+
+    </script>
+</body>
+
+</html>
